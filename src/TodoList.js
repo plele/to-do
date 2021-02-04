@@ -42,9 +42,8 @@ class TodoList extends Component {
   deleteItem(id){
     //copy of the current list of items
     const items = [...this.state.items]
-    
     //filter out the item being deleted
-    const updatedItemsList = items.filter(item => item.id == id) ;
+    const updatedItemsList = items.filter(item => item.id !== id) ;
 
     this.setState({
       items: updatedItemsList
@@ -79,7 +78,7 @@ class TodoList extends Component {
                   <li key={item.id}>
                     {item.value}
                     <button 
-                        onClick={(id)=> this.deleteItem(id)}
+                        onClick={()=> this.deleteItem(item.id)}
                         className="btn"
                     >
                     x
